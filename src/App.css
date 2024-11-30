@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -36,3 +37,38 @@
     transform: rotate(360deg);
   }
 }
+/* Ripple effect on hover */
+.button-ripple {
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(111, 107, 107);
+}
+
+.button-ripple:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3); /* Ripple color */
+  border-radius: 50%;
+  opacity: 0;
+  transition: transform 0.4s, opacity 0.8s;
+}
+
+.button-ripple:hover:before {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+
+@keyframes ripple-animation {
+  to {
+      width: 200px;
+      height: 200px;
+      opacity: 0;
+  }
+}
+

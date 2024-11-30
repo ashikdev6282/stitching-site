@@ -1,0 +1,269 @@
+/* General Styles */
+.header-section {
+  position: relative;
+  background: url('https://images.unsplash.com/photo-1602488283247-29bf1f5b148a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjIxfHxjbG90aGluZ3xlbnwwfHwwfHx8MA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Overlay for background darkening */
+.header-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Top Bar */
+.top-bar {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5rem 2rem;
+  font-size: 0.9rem;
+}
+
+.contact-info,
+.cart-info {
+  color: #d3d3d3;
+}
+
+/* Button styles */
+.sc-button {
+  position: relative;
+  overflow: hidden; /* Confine ripple effect within the button */
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  outline: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  margin-right: 30px;
+}
+
+.sc-button:hover {
+  background-color: #333;
+}
+.sc-button span {
+  position: relative;
+  z-index: 1;
+}
+.sc-button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%; /* Slightly larger than the button to cover edges */
+  height: 100%; 
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 80%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.8s ease;
+  pointer-events: none; /* Allows clicks to pass through ripple */
+}
+.sc-button:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Header Content */
+.header-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 1rem;
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 0.5rem;
+}
+
+.brand-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #d3d3d3;
+}
+
+.main-heading {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 1.5rem 0;
+}
+
+.appointment-btn {
+  position: relative;
+  overflow: hidden; /* Confine ripple effect within the button */
+  background-color: #333;
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+.appointment-btn:hover {
+  background-color: #333;
+}
+.appointment-btn::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%; /* Slightly larger than the button to cover edges */
+  height: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 80%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.8s ease;
+  pointer-events: none; /* Allows clicks to pass through ripple */
+}
+
+/* Trigger the ripple on hover */
+.appointment-btn:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+.navbar-nav {
+  display: flex;
+  gap: 1.5rem;
+  font-size: 1.1rem;
+  flex-direction: row;
+  list-style: none;
+}
+
+.nav-link {
+  position: relative;
+  color: #d3d3d3;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  background-color: #333;
+  border-radius: 4px;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 70%;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: transform 0.6s ease, opacity 0.8s ease;
+  pointer-events: none;
+}
+.nav-link:hover::after {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+}
+
+/* Navbar for Mobile */
+.navbar-toggler {
+  display: none;
+  cursor: pointer;
+  color: #d3d3d3;
+  font-size: 1.5rem;
+  border: none;
+  background: none;
+}
+
+@media (max-width: 768px) {
+  .navbar-nav {
+    flex-direction: column;
+    gap: 1rem;
+    display: none;
+  }
+  
+  .navbar-nav.active {
+    display: flex;
+  }
+
+  .navbar-toggler {
+    display: inline;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 3;
+  }
+
+  .cart-info {
+    display: flex;
+    flex-direction: column; /* Stack the elements vertically on smaller screens */
+    align-items: center;
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center; /* Center the buttons in mobile */
+    margin-top: 1rem;
+  }
+}
+
+/* New styles for profile button */
+.profile-btn button {
+  background-color: #333;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  
+}
+
+.profile-btn button:hover {
+  background-color: #333; /* Hover color */
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.profile-btn {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.profile-btn button {
+  padding: 8px 15px;
+}

@@ -1,0 +1,137 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* Gallery Styling */
+.gallery {
+  text-align: center;
+  padding: 20px;
+  margin: 0 100px; /* Adds margin to the left and right of the gallery */
+}
+
+.gallery h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: #eaba1e;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+/* Grid Layout */
+.gallery-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  margin-top: 20px;
+}
+
+/* Card Styling */
+.gallery-card {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  animation: fadeIn 1s ease-out; /* Card Entry Animation */
+}
+
+/* Image Styling */
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.8s ease, filter 0.8s ease; /* Added filter for hover effect */
+}
+
+/* Hover Effects for Cards */
+.gallery-card:hover {
+  transform: scale(1.08); /* Enhanced scale effect */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+}
+
+.gallery-card:hover img {
+  transform: scale(1.15) rotate(-2deg); /* Subtle image rotation */
+  filter: brightness(1.2); /* Brighten the image on hover */
+}
+
+/* Glow Effect */
+.gallery-card:hover::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+/* Fade-In Animation for Cards */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.gallery-card:hover {
+  animation: pulse 1.5s infinite; /* Adds pulse animation on hover */
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .gallery h1 {
+    font-size: 1.5rem;
+  }
+
+  .gallery {
+    margin: 0 10px; /* Reduce margin on smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .gallery h1 {
+    font-size: 1.2rem;
+  }
+  
+  .gallery-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+
+  .gallery {
+    margin: 0 5px; /* Even smaller margin for mobile screens */
+  }
+}
